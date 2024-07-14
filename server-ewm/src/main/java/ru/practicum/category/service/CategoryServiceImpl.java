@@ -39,10 +39,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
     @Override
-    public CategoryDto update(CategoryDto categoryDto, Long Id) {
-        checkCategoryExists(Id);
+    public CategoryDto update(CategoryDto categoryDto, Long catId) {
+        checkCategoryExists(catId);
 
-        categoryDto.setId(Id);
+        categoryDto.setId(catId);
         Category category = categoryMapper.toCategory(categoryDto);
         Category updatedCategory = categoryRepository.saveAndFlush(category);
 
@@ -52,12 +52,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
     @Override
-    public void delete(Long Id) {
-        checkCategoryExists(Id);
-        checkEventsAssociated(Id);
+    public void delete(Long catId) {
+        checkCategoryExists(catId);
+        checkEventsAssociated(catId);
 
-        categoryRepository.deleteById(Id);
-        log.info("Category with id={} deleted", Id);
+        categoryRepository.deleteById(catId);
+        log.info("Category with id={} deleted", catId);
     }
 
 
@@ -74,17 +74,17 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional(readOnly = true)
     @Override
-    public CategoryDto getById(Long Id) {
-        Category category = getCategory(Id);
+    public CategoryDto getById(Long catId) {
+        Category category = getCategory(catId);
 
-        log.info("Received category={} by id={}", category, Id);
+        log.info("Received category={} by id={}", category, catId);
         return categoryMapper.toCategoryDto(category);
     }
 
-    private void checkCategoryExists(Long Id) {
-        if (!categoryRepository.existsById(Id)) {
-            log.warn("Category with id={} catId was not found", Id);
-            throw new NotFoundException("Category with id=" + Id + " was not found",
+    private void checkCategoryExists(Long catId) {
+        if (!categoryRepository.existsById(catId)) {
+            log.warn("Category with id={} catId was not found", catId);
+            throw new NotFoundException("Category with id=" + catId + " was not found",
                     Collections.singletonList("Category id does not exist"));
         }
     }

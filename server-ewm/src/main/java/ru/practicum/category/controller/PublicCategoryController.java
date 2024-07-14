@@ -20,15 +20,15 @@ public class PublicCategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryDto> getAll(@RequestParam(defaultValue = "0", required = false) Integer from,
+    public List<CategoryDto> getCategories(@RequestParam(defaultValue = "0", required = false) Integer from,
                                            @RequestParam(defaultValue = "10", required = false) Integer size) {
         log.info("GET /categories: request get categories, from={}, size={}", from, size);
         return categoryService.getAll(from, size);
     }
 
-    @GetMapping("/{Id}")
-    public CategoryDto getById(@PathVariable @NotNull @Min(1L) Long Id) {
-        log.info("GET /categories/{catId}: request get category by id={}", Id);
-        return categoryService.getById(Id);
+    @GetMapping("/{catId}")
+    public CategoryDto getOneCategory(@PathVariable @NotNull @Min(1L) Long catId) {
+        log.info("GET /categories/{catId}: request get category by id={}", catId);
+        return categoryService.getById(catId);
     }
 }
