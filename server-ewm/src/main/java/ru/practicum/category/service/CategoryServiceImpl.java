@@ -39,10 +39,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
     @Override
-    public CategoryDto update(CategoryDto categoryDto, Long Id) {
-        checkCategoryExists(Id);
+    public CategoryDto update(CategoryDto categoryDto, Long id) {
+        checkCategoryExists(id);
 
-        categoryDto.setId(Id);
+        categoryDto.setId(id);
         Category category = categoryMapper.toCategory(categoryDto);
         Category updatedCategory = categoryRepository.saveAndFlush(category);
 
@@ -52,12 +52,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional
     @Override
-    public void delete(Long Id) {
-        checkCategoryExists(Id);
-        checkEventsAssociated(Id);
+    public void delete(Long id) {
+        checkCategoryExists(id);
+        checkEventsAssociated(id);
 
-        categoryRepository.deleteById(Id);
-        log.info("Category with id={} deleted", Id);
+        categoryRepository.deleteById(id);
+        log.info("Category with id={} deleted", id);
     }
 
 

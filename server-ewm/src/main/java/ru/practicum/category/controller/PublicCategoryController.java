@@ -27,8 +27,8 @@ public class PublicCategoryController {
     }
 
     @GetMapping("/{Id}")
-    public CategoryDto getById(@PathVariable @NotNull @Min(1L) Long Id) {
-        log.info("GET /categories/{catId}: request get category by id={}", Id);
-        return categoryService.getById(Id);
+    public CategoryDto getById(@PathVariable @NotNull @Min(1L) Long id) {
+        log.info("GET /categories/{catId}: request get category by id={}", id);
+        return categoryService.getById(id);
     }
 }

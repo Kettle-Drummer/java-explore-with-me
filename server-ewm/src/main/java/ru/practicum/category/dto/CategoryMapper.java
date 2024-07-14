@@ -3,7 +3,6 @@ package ru.practicum.category.dto;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-import org.mapstruct.factory.Mappers;
 import ru.practicum.category.model.Category;
 
 import java.util.List;

@@ -3,7 +3,6 @@ package ru.practicum.category.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.category.dto.CategoryDto;
 import ru.practicum.category.dto.NewCategoryDto;
@@ -30,15 +29,15 @@ public class AdminCategoryController {
 
     @PatchMapping("/{Id}")
     public CategoryDto update(@Valid @RequestBody CategoryDto categoryDto,
-                              @PathVariable @NotNull @Min(1L) Long Id) {
-        log.info("PATCH /admin/categories/{catId}: request update category={} by id={}", categoryDto, Id);
-        return categoryService.update(categoryDto, Id);
+                              @PathVariable @NotNull @Min(1L) Long id) {
+        log.info("PATCH /admin/categories/{catId}: request update category={} by id={}", categoryDto, id);
+        return categoryService.update(categoryDto, id);
     }
 
     @DeleteMapping("/{Id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable @NotNull @Min(1L) Long Id) {
-        log.info("DELETE /admin/categories/{catId}: request delete category by id={}", Id);
-        categoryService.delete(Id);
+    public void delete(@PathVariable @NotNull @Min(1L) Long id) {
+        log.info("DELETE /admin/categories/{catId}: request delete category by id={}", id);
+        categoryService.delete(id);
     }
 }
