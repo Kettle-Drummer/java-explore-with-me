@@ -23,4 +23,3 @@ public class EndpointHit {
     private String ip;
     private LocalDateTime timestamp;
 }
-
