@@ -45,8 +45,8 @@ public class AdminEventController {
 
     @PatchMapping("/{Id}")
     public EventFullDto updateEventByAdmin(@Valid @RequestBody UpdateEventAdminRequest updateEventAdminRequest,
-                                           @PathVariable @NotNull @Min(1L) Long Id) {
-        log.info("PATCH /admin/events/{eventId}: request update event={} by id={}", updateEventAdminRequest, Id);
-        return eventService.updateEventByAdmin(updateEventAdminRequest, Id);
+                                           @PathVariable @NotNull @Min(1L) Long eventId) {
+        log.info("PATCH /admin/events/{eventId}: request update event={} by id={}", updateEventAdminRequest, eventId);
+        return eventService.updateEventByAdmin(updateEventAdminRequest, eventId);
     }
 }
