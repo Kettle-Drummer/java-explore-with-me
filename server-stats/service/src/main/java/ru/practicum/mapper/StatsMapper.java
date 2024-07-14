@@ -1,11 +1,10 @@
 package ru.practicum.mapper;
 
 import org.mapstruct.Mapper;
-
+import ru.practicum.EndpointHitDto;
+import ru.practicum.ViewStatsDto;
 import ru.practicum.model.EndpointHit;
 import ru.practicum.model.ViewStats;
-import ru.yandex.practicum.EndpointHitDto;
-import ru.yandex.practicum.ViewStatsDto;
 
 import java.util.List;
 
