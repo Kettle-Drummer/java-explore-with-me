@@ -74,17 +74,17 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional(readOnly = true)
     @Override
-    public CategoryDto getById(Long Id) {
-        Category category = getCategory(Id);
+    public CategoryDto getById(Long id) {
+        Category category = getCategory(id);
 
-        log.info("Received category={} by id={}", category, Id);
+        log.info("Received category={} by id={}", category, id);
         return categoryMapper.toCategoryDto(category);
     }
 
-    private void checkCategoryExists(Long Id) {
-        if (!categoryRepository.existsById(Id)) {
-            log.warn("Category with id={} catId was not found", Id);
-            throw new NotFoundException("Category with id=" + Id + " was not found",
+    private void checkCategoryExists(Long id) {
+        if (!categoryRepository.existsById(id)) {
+            log.warn("Category with id={} catId was not found", id);
+            throw new NotFoundException("Category with id=" + id + " was not found",
                     Collections.singletonList("Category id does not exist"));
         }
     }
